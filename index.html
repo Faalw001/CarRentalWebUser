@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <html>
+    <head>
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous"
+      />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+      <!-- Keycloak -->
+      <script src="/keycloak-js-adapter-npm-dist-20.0.3/dist/keycloak.js"></script>
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+      <link rel="shortcut icon" href="#" />
+      <link rel="Stylesheet" href="/index.css" />
+      <link rel="Stylesheet" href="/car.css" />
+      <script src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+      <link rel="BookCar" href="UserWebSite/bookings/booking.html" />
+      <link rel="seeBookings" href="UserWebSite/seeBookings/seebookings.html" />
+      <link rel="home" href="UserWebSite/home/home.html" />
+
+      <!-- Keycloak frontend adapter login function -->
+      <script>
+        let keycloak = new Keycloak({
+          url: "http://localhost:8080",
+          realm: "carrentalrealm",
+          clientId: "carrental",
+        });
+        function initKeycloak() {
+          return keycloak.init({ onLoad: "login-required" });
+        }
+      </script>
+    </head>
+
+    <body onload="initKeycloak()">
+      <div class="topnav">
+        <!-- <a id="home" href="#Home">Home</a> -->
+        <a id="home" href="#home">Customer Home</a>
+        <a id="BookCar" href="#BookCar">Order Your Car</a>
+        <a id="seeBookings" href="#seeBooking">Your Orders</a>
+      </div>
+
+      <div id="div2">
+        <div ></div>
+        <div id="div1"></div>
+      </div>
+
+      <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script> -->
+      <script>
+     
+       
+          $("#home").click(function () {
+            $("#div1").load("UserWebSite/home/home.html");
+          });
+
+          $(document).ready(function () {
+            $("#BookCar").click(function () {
+              $("#div1").load("UserWebSite/bookings/booking.html");
+            });
+          });
+          $(document).ready(function () {
+            $("#seeBookings").click(function () {
+              $("#div1").load("UserWebSite/seeBookings/seebookings.html");
+            });
+          });
+
+
+      </script>
+      
+    </body>
+  </html>
+</html>
